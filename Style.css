@@ -1,0 +1,175 @@
+/*
+  ============================================
+  Project:     Calculator
+  File:        style.css
+  Description: Styles for the calculator layout, theme colors, keys and display
+  Author:      Nasim Bidel
+  Created:     October 2026
+  ============================================
+  */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap");
+
+:root {
+  --bg: #0f1412;
+  --body: #161d1a;
+  --key: #222b27;
+  --key-hover: #2c3732;
+  --fn: #3a4741;
+  --fn-text: #d6e4dd;
+  --op: #4fd1a5;
+  --op-text: #0f1412;
+  --equals: #ff7a6b;
+  --text: #f2f7f4;
+  --muted: #7d8f87;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 30% 20%, #1c2622, var(--bg) 70%);
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.calculator {
+  width: 460px;
+  padding: 24px 24px 24px;
+  border-radius: 36px;
+  background: var(--body);
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Display */
+.display {
+  min-height: 90px;
+  padding: 0 10px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: right;
+  color: var(--text);
+  overflow: hidden;
+}
+
+.previous {
+  min-height: 24px;
+  font-size: 1.05rem;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+}
+
+.current {
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  word-break: break-all;
+}
+
+/* Keys */
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.key {
+  height: 56px;
+  border: none;
+  border-radius: 16px;
+  background: var(--key);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 1.6rem;
+  font-weight: 400;
+  cursor: pointer;
+  box-shadow:
+    0 4px 0 rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: background 0.15s, transform 0.08s, box-shadow 0.08s;
+  user-select: none;
+}
+
+.key:hover {
+  background: var(--key-hover);
+}
+
+.key:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
+}
+
+/* Function keys (AC, DEL, %) */
+.key.fn {
+  background: var(--fn);
+  color: var(--fn-text);
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.key.fn:hover {
+  background: #45544d;
+}
+
+/* Operators */
+.key.op {
+  background: var(--op);
+  color: var(--op-text);
+  font-size: 1.9rem;
+  font-weight: 500;
+}
+
+.key.op:hover {
+  background: #6ee0b9;
+}
+
+.key.op.active {
+  background: var(--text);
+  color: #2f9c77;
+}
+
+/* Equals */
+.key.equals {
+  background: var(--equals);
+  color: #fff;
+  font-size: 1.9rem;
+  font-weight: 500;
+}
+
+.key.equals:hover {
+  background: #ff9387;
+}
+
+/* Wide zero */
+.key.zero {
+  grid-column: span 2;
+}
+
+/* Small screens */
+@media (max-width: 500px) {
+  .calculator {
+    width: calc(100% - 32px);
+    padding: 20px 16px;
+  }
+
+  .keys {
+    gap: 10px;
+  }
+
+  .key {
+    height: 52px;
+  }
+
+  .current {
+    font-size: 2.5rem;
+  }
+}
